@@ -179,6 +179,9 @@ define('SAML_INTERNAL', 1);
         }
 
         if (function_exists('saml_hook_authorize_user')) {
+            // Per the hook definition, this function should return true or an error.
+            // @todo - Does this effectively negate the test above?
+            $authorize_user = true;
             $result = saml_hook_authorize_user($username, $saml_attributes, $authorize_user);
             if ($result !== true) {
                 $authorize_user = false;
