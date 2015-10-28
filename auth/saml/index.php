@@ -166,7 +166,7 @@ define('SAML_INTERNAL', 1);
         $user_exists = $DB->get_record("user", array("username" => $username));
         
         if (function_exists('saml_hook_user_exists')) {
-            $user_exists = $user_exists && saml_hook_user_exists($username, $saml_attributes, $user_exists);
+            $user_exists = saml_hook_user_exists($username, $saml_attributes, $user_exists);
         }
 
         $authorize_user = true;
